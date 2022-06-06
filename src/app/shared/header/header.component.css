@@ -1,0 +1,26 @@
+
+.logo {
+  margin-top: 20px;
+}
+
+.logo img {
+  float: left;
+}
+
+.logo p {
+  float: left;
+  font-size: 48px;
+}
+
+
+.logo_step2{
+  width: 203px;
+  height: 57px;
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 71px;
+
+  color: #4E3C8F;
+}

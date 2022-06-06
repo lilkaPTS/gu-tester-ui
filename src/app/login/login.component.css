@@ -1,0 +1,71 @@
+.login_window {
+  width: 790px;
+  position: absolute;
+  height: 508px;
+  top: 26.5%;
+  background: #C1BADC;
+  border: 3px solid #4E3C8F;
+  border-radius: 5px;
+}
+
+.cont_center{
+  text-align: center;
+}
+
+.cont_start{
+  text-align: start;
+}
+
+.cont_end{
+  text-align: end;
+}
+
+
+.button_sizer {
+  width: 220px;
+  font-family: 'Rubik';
+  font-size: 24px;
+  line-height: 28px;
+  color: #4E3C8F;
+  height: 47px;
+  background: #D8D2EE;
+  border: 3px solid #4E3C8F;
+  border-radius: 5px;
+}
+
+input {
+  width: 520px;
+  height: 46px;
+  background: #FFFFFF;
+  border: 3px solid #4E3C8F;
+  border-radius: 5px;
+}
+
+.button_reg {
+
+}
+
+.button_log {
+  text-align: end;
+}
+
+.login_text {
+  font-family: 'Rubik';
+  font-size: 32px;
+  line-height: 38px;
+  color: #4E3C8F;
+}
+
+.login_table {
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input_title_margin {
+  margin-bottom: 26px;
+}
+
+.input_margin {
+  margin-bottom: 59px;
+}

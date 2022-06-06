@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { TesterPersonalAccountComponent } from './personal-accounts/tester-personal-account/tester-personal-account.component';
 import { DeveloperPersonalAccountComponent } from './personal-accounts/developer-personal-account/developer-personal-account.component';
 import { AdminPersonalAccountComponent } from './personal-accounts/admin-personal-account/admin-personal-account.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AdminPersonalAccountComponent } from './personal-accounts/admin-persona
     RegistrationComponent,
     TesterPersonalAccountComponent,
     DeveloperPersonalAccountComponent,
-    AdminPersonalAccountComponent
+    AdminPersonalAccountComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
