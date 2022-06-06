@@ -1,0 +1,101 @@
+.button_changed_color {
+  background: #C1BADC;
+}
+
+.button_default_color {
+  background: #D8D2EE;
+}
+
+.vertical_centering_developer {
+  position: absolute;
+  top: 24.5%;
+}
+
+.vertical_centering_tester {
+  position: absolute;
+  top: 9%;
+}
+
+.switch_buttons {
+  width: 520px;
+}
+
+.switch_buttons_table{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.switch_buttons_table td {
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.registration_window_developer {
+  width: 520px;
+  height: 420px;
+  top: 30%;
+  background: #C1BADC;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+}
+
+.registration_window_tester {
+  width: 520px;
+  height: 720px;
+  background: #C1BADC;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+}
+
+.button_sizer {
+  width: 145px;
+  height: 31px;
+  font-family: 'Rubik';
+  font-size: 12px;
+  color: #4E3C8F;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+}
+
+input {
+  width: 340px;
+  height: 30px;
+  background: #FFFFFF;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+}
+
+.contend_end {
+  text-align: end;
+}
+
+.registration_text {
+  font-family: 'Rubik';
+  font-size: 21px;
+  color: #4E3C8F;
+}
+
+.registration_table_developer {
+  margin-top: 6%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.registration_table_tester {
+  margin-top: 6%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input_title_margin {
+  margin-bottom: 5px;
+}
+
+.input_margin {
+  margin-bottom: 5px;
+}
+.reg_log_button {
+  margin-top: 20px;
+}

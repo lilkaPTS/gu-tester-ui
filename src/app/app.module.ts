@@ -6,20 +6,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { TesterPersonalAccountComponent } from './personal-accounts/tester-personal-account/tester-personal-account.component';
-import { DeveloperPersonalAccountComponent } from './personal-accounts/developer-personal-account/developer-personal-account.component';
-import { AdminPersonalAccountComponent } from './personal-accounts/admin-personal-account/admin-personal-account.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { PersonalAccountComponent } from './personal-account/personal-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    TesterPersonalAccountComponent,
-    DeveloperPersonalAccountComponent,
-    AdminPersonalAccountComponent,
-    HeaderComponent
+    HeaderComponent,
+    PersonalAccountComponent
   ],
   imports: [
     BrowserModule,

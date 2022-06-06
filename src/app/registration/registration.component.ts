@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
+  registrationSwitcherValue: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  execDeveloperRegistration():void {
+    this.registrationSwitcherValue = false;
+  }
+
+  execTesterRegistration():void {
+    this.registrationSwitcherValue = true;
+  }
 }

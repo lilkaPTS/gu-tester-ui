@@ -1,31 +1,18 @@
 .login_window {
   width: 520px;
   position: absolute;
-  height: 335px;
-  top: 32%;
+  height: 275px;
+  top: 35%;
   background: #C1BADC;
   border: 2px solid #4E3C8F;
   border-radius: 3px;
 }
 
-.cont_center{
-  text-align: center;
-}
-
-.cont_start{
-  text-align: start;
-}
-
-.cont_end{
-  text-align: end;
-}
-
-
 .button_sizer {
   width: 145px;
   height: 31px;
   font-family: 'Rubik';
-  font-size: 16px;
+  font-size: 12px;
   color: #4E3C8F;
   background: #D8D2EE;
   border: 2px solid #4E3C8F;
@@ -40,11 +27,7 @@ input {
   border-radius: 3px;
 }
 
-.button_reg {
-
-}
-
-.button_log {
+.contend_end {
   text-align: end;
 }
 
@@ -55,15 +38,18 @@ input {
 }
 
 .login_table {
-  margin-top: 9%;
+  margin-top: 6%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .input_title_margin {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .input_margin {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+}
+.reg_log_button {
+  margin-top: 20px;
 }

@@ -1,2 +1,70 @@
-<p>registration works!</p>
-<button type="button" class="btn btn-success" routerLink="/login-component">login</button>
+<div class="row justify-content-center">
+  <div class="col-lg-4">
+    <div [ngClass]="registrationSwitcherValue ? 'vertical_centering_tester' : 'vertical_centering_developer'">
+      <div class="switch_buttons">
+        <table class="switch_buttons_table">
+          <tr>
+            <td><button type="button" [ngClass]="registrationSwitcherValue ? 'button_changed_color' : 'button_default_color'" class="button_sizer" (click)="execDeveloperRegistration()">Разработчик</button></td>
+            <td class="contend_end switch_buttons_table_td"><button type="button" [ngClass]="registrationSwitcherValue ? 'button_default_color' : 'button_changed_color'" class="button_sizer" (click)="execTesterRegistration()">Тестировщик</button></td>
+          </tr>
+        </table>
+      </div>
+      <div [ngClass]="registrationSwitcherValue ? 'registration_window_tester' : 'registration_window_developer'">
+        <table [ngClass]="registrationSwitcherValue ? 'registration_table_tester' : 'registration_table_developer'">
+          <tr>
+            <td colspan="2">
+              <div class="registration_text input_title_margin">Email*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="registration_text input_title_margin">Имя*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="registration_text input_title_margin">Пароль*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div class="registration_text input_title_margin">Подтвердите пароль*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr *ngIf="registrationSwitcherValue">
+            <td colspan="2">
+              <div class="registration_text input_title_margin">Устройство*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr *ngIf="registrationSwitcherValue">
+            <td colspan="2">
+              <div class="registration_text input_title_margin">ОС*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr *ngIf="registrationSwitcherValue">
+            <td colspan="2">
+              <div class="registration_text input_title_margin">Сеть*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr *ngIf="registrationSwitcherValue">
+            <td colspan="2">
+              <div class="registration_text input_title_margin">Оператор*</div>
+              <div class="input_margin"><input></div>
+            </td>
+          </tr>
+          <tr>
+            <td><button type="button" class="button_sizer button_default_color reg_log_button" routerLink="/login-component">Авторизация</button></td>
+            <td class="contend_end"><button type="button" class="button_sizer button_default_color reg_log_button" routerLink="/personal-account-component">Зарегистрироваться</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
