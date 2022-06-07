@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectBoxComponent implements OnInit {
 
+  selectBoxTitle: string = "Выбор устройств"
+
   constructor() { }
 
   ngOnInit(): void {

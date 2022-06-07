@@ -22,4 +22,8 @@ body{
     max-width: 1600px;
     padding: 0;
   }
+  .modal-xlg {
+    width: 90%;
+  }
 }
+
