@@ -3,15 +3,25 @@
     <div class="personal_account_window">
       <table class="personal_account_table">
         <tr>
-          <td colspan="2">кнопка</td>
+          <td class="text-center" colspan="2">
+            <button type="button" class="personal_account_button">Создать заявку</button>
+          </td>
         </tr>
         <tr>
-          <td><app-list-summary [listSummary]="waitingForApproval"></app-list-summary></td>
-          <td><app-list-summary [listSummary]="approved"></app-list-summary></td>
+          <td class="personal_account_td">
+            <app-list-summary [header]="'Ждут одобрения администратора'" [listSummary]="waitingForApproval"></app-list-summary>
+          </td>
+          <td class="personal_account_td" align="right">
+            <app-list-summary [header]="'Одобренные'" [listSummary]="approved"></app-list-summary>
+          </td>
         </tr>
         <tr>
-          <td><app-list-summary [listSummary]="current"></app-list-summary></td>
-          <td><app-list-summary [listSummary]="completed"></app-list-summary></td>
+          <td class="personal_account_td">
+            <app-list-summary [header]="'Текущие'" [listSummary]="current"></app-list-summary>
+          </td>
+          <td class="personal_account_td" align="right">
+            <app-list-summary [header]="'Законченные'" [listSummary]="completed"></app-list-summary>
+          </td>
         </tr>
       </table>
     </div>

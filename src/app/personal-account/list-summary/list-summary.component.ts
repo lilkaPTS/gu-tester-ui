@@ -9,6 +9,7 @@ import {SummaryForList} from "./SummaryForList";
 export class ListSummaryComponent implements OnInit {
 
   @Input() listSummary: SummaryForList[]
+  @Input() header: string
 
   constructor() { }
 

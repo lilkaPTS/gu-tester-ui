@@ -26,7 +26,7 @@ export class PersonalAccountComponent implements OnInit {
   completed: SummaryForList[] = [
     {id: 1, text: "Приложение для университета"},
     {id: 2, text: "Приложение для университета"},
-    {id: 3, text: "Приложение для ghj ghj ghj университета223123hjg1231а"},
+    {id: 3, text: "Приложение для университета"},
     {id: 5, text: "Приложение для университета"},
     {id: 6, text: "Приложение для университета"},
     {id: 8, text: "Приложение для университета"},

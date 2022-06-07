@@ -1,3 +1,13 @@
+.list_summary_text_box {
+  width: 300px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 17px;
+  color: #4E3C8F;
+  margin-bottom: 5px;
+}
 .list_summary_window {
   width: 300px;
   height: 320px;
@@ -12,8 +22,8 @@
 .list_summary_window::-webkit-scrollbar-track {
   /*border: 2px solid #4E3C8F;*/
   /*padding: 2px ;*/
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   background-color: #D8D2EE;
 }
 
@@ -36,7 +46,5 @@
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
-
-
   color: #4E3C8F;
 }
