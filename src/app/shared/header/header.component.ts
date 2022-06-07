@@ -13,9 +13,13 @@ import {Observable} from "rxjs";
 export class HeaderComponent implements OnInit {
 
   role$: Observable<Role>
+  authorization$: Observable<boolean>
 
-  constructor(private headerService: HeaderService) {
+  constructor(
+    private headerService: HeaderService
+  ) {
     this.role$=headerService.role
+    this.authorization$=headerService.authorization
   }
 
   ngOnInit(): void {

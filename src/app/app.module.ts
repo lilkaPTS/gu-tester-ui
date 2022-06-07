@@ -9,6 +9,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { PersonalAccountComponent } from './personal-account/personal-account.component';
 import { ListSummaryComponent } from './personal-account/list-summary/list-summary.component';
+import { SelectBoxComponent } from './shared/select-box/select-box.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -17,12 +21,17 @@ import { ListSummaryComponent } from './personal-account/list-summary/list-summa
     RegistrationComponent,
     HeaderComponent,
     PersonalAccountComponent,
-    ListSummaryComponent
+    ListSummaryComponent,
+    SelectBoxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
