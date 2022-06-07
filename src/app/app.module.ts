@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { PersonalAccountComponent } from './personal-account/personal-account.component';
+import { ListSummaryComponent } from './personal-account/list-summary/list-summary.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PersonalAccountComponent } from './personal-account/personal-account.co
     LoginComponent,
     RegistrationComponent,
     HeaderComponent,
-    PersonalAccountComponent
+    PersonalAccountComponent,
+    ListSummaryComponent
   ],
   imports: [
     BrowserModule,

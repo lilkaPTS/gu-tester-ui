@@ -1,1 +1,19 @@
-<p>personal-account works!</p>
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="personal_account_window">
+      <table class="personal_account_table">
+        <tr>
+          <td colspan="2">кнопка</td>
+        </tr>
+        <tr>
+          <td><app-list-summary [listSummary]="waitingForApproval"></app-list-summary></td>
+          <td><app-list-summary [listSummary]="approved"></app-list-summary></td>
+        </tr>
+        <tr>
+          <td><app-list-summary [listSummary]="current"></app-list-summary></td>
+          <td><app-list-summary [listSummary]="completed"></app-list-summary></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

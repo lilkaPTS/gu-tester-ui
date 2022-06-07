@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Role} from "../../enums/Role";
+import {ActivatedRoute} from "@angular/router";
+import {PersonalAccountComponent} from "../../personal-account/personal-account.component";
+import {HeaderService} from "../../services/header.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -7,7 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  role$: Observable<Role>
+
+  constructor(private headerService: HeaderService) {
+    this.role$=headerService.role
+  }
 
   ngOnInit(): void {
   }

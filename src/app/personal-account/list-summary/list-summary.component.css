@@ -1,0 +1,42 @@
+.list_summary_window {
+  width: 300px;
+  height: 320px;
+
+  background: #D8D2EE;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+  overflow-x: hidden; /* прокрутка по вертикали */
+  overflow-y: scroll; /* прокрутка по вертикали */
+}
+
+.list_summary_window::-webkit-scrollbar-track {
+  /*border: 2px solid #4E3C8F;*/
+  /*padding: 2px ;*/
+  margin-top: 70px;
+  margin-bottom: 70px;
+  background-color: #D8D2EE;
+}
+
+.list_summary_window::-webkit-scrollbar {
+  width: 10px;
+}
+
+.list_summary_window::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  /*box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+  background-color: #4E3C8F;
+  /*border: 1px solid #000;*/
+}
+
+.p_summary {
+  word-wrap: break-word;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+
+
+  color: #4E3C8F;
+}
