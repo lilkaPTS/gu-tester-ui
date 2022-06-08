@@ -1,36 +1,29 @@
 <div class="select_window">
-  <h2 class="select_title">{{selectBoxTitle}}</h2>
+  <h2 class="select_title">{{selectableObject}}</h2>
   <div class="select_search">
-    <input class="select_search_input">
-    <button class="select_search_button">
+    <input [(ngModel)]="searchExpression" class="select_search_input">
+    <button class="select_search_button"(click)="search()">
       <img class="select_loupe_imp" src="../../../assets/pictures/selectBox/loupe.png" height="30" width="30"/>
     </button>
   </div>
   <table class="select_table_grid" align="center">
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
+    <tr *ngFor="let wl1 of printArray">
+      <td *ngFor="let wl2 of wl1" (click)="focusItem(wl2)"
+          [ngClass]="{
+          'empty' : !this.workingArr.includes(wl2),
+          'selected_item': this.selectedItems.includes(wl2),
+          'default_td_border': !this.selectedItems.includes(wl2)
+           }">{{wl2}}</td>
     </tr>
   </table>
   <div class="select_footer">
-      <button class="select_paginator_left">
+      <button class="select_paginator_left" (click)="pagePrev()">
         <img src="../../../assets/pictures/selectBox/paginatorLeft.png" height="15" width="45"/>
       </button>
-      <button class="select_paginator_right">
+      <button class="select_paginator_right" (click)="pageNext()">
         <img src="../../../assets/pictures/selectBox/paginatorRight.png" height="15" width="45"/>
       </button>
-      <button class="select_confirm_button align-top">
+      <button class="select_confirm_button align-top" (click)="confirm()">
         Подтвердить
       </button>
   </div>

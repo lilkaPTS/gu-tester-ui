@@ -19,15 +19,15 @@
 .select_table_grid {
   margin: auto;
   border-collapse: separate;
-  border-spacing: 70px 35px;
+  border-spacing: 50px 35px;
 }
 
 .select_table_grid td {
-  width: 180px;
+  text-align: center;
+  width: 200px;
   height: 30px;
-  background: #FFFFFF;
-  border: 2px solid #4E3C8F;
   border-radius: 3px;
+  border: 2px solid #4E3C8F;
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 700;
@@ -43,7 +43,7 @@
 
 .select_search_button {
   display: inline-block;
-  width: 90px;
+  width: 130px;
   height: 30px;
   background: #D8D2EE;
   border: 2px solid #4E3C8F;
@@ -52,12 +52,16 @@
 
 .select_search_input {
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 28px;
   width: 540px;
   height: 30px;
   background: #FFFFFF;
   border: 2px solid #4E3C8F;
   border-radius: 3px;
+  font-family: 'Rubik';
+  font-size: 14px;
+  line-height: 17px;
+  color: #4E3C8F;
 }
 
 .select_loupe_imp {
@@ -88,7 +92,7 @@
   background: #D8D2EE;
   border: 2px solid #4E3C8F;
   border-radius: 3px;
-  margin-right: 356px;
+  margin-right: 396px;
 }
 
 .select_confirm_button {
@@ -97,15 +101,23 @@
   background: #D8D2EE;
   border: 2px solid #4E3C8F;
   border-radius: 3px;
-
   font-family: 'Rubik';
   font-size: 14px;
   line-height: 17px;
   color: #4E3C8F;
-
 }
 
+.empty {
+  visibility: hidden;
+}
 
+.selected_item {
+  background: #FFF7D2;
+}
+
+.default_td_border {
+  background: #FFFFFF;
+}
 
 
 

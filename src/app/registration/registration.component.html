@@ -39,7 +39,7 @@
             <td colspan="2">
               <div class="registration_text input_title_margin">Устройство*</div>
               <div class="input_margin">
-                <input type="text" readonly>
+                <input type="text" [(ngModel)]="device" readonly (click)="open(mymodal,'устройства')">
               </div>
             </td>
           </tr>
@@ -47,7 +47,7 @@
             <td colspan="2">
               <div class="registration_text input_title_margin">ОС*</div>
               <div class="input_margin">
-                <input type="text" readonly>
+                <input type="text" [(ngModel)]="OS" readonly (click)="open(mymodal,'ОС')">
               </div>
             </td>
           </tr>
@@ -55,7 +55,7 @@
             <td colspan="2">
               <div class="registration_text input_title_margin">Сеть*</div>
               <div class="input_margin">
-                <input type="text" readonly>
+                <input type="text" [(ngModel)]="networks" readonly (click)="open(mymodal, 'сети', 2)">
               </div>
             </td>
           </tr>
@@ -63,7 +63,7 @@
             <td colspan="2">
               <div class="registration_text input_title_margin">Оператор*</div>
               <div class="input_margin">
-                <input type="text" readonly (click)="open(mymodal)">
+                <input type="text" [(ngModel)]="mobileOperator" readonly (click)="open(mymodal,'оператора')">
               </div>
             </td>
           </tr>
@@ -77,7 +77,6 @@
   </div>
 </div>
 
-
 <ng-template #mymodal let-modal>
-  <app-select-box></app-select-box>
+  <app-select-box [selectableObject]="this.selectableObject" [modal]="modal" [limit]="limit" (outputArr) = "setInput($event)"></app-select-box>
 </ng-template>
