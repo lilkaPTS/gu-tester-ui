@@ -27,8 +27,6 @@ export class SelectBoxComponent implements OnInit {
     private selectBoxService: SelectBoxService
   ) { }
 
-
-
   ngOnInit(): void {
     let initObservable: Observable<string[]> = new Observable<string[]>();
     if(this.selectableObject == 'устройства') {
