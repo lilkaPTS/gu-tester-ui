@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {PersonalAccountComponent} from "../../personal-account/personal-account.component";
 import {HeaderService} from "../../services/shared/header.service";
-import {Observable} from "rxjs";
-import {LoginComponent} from "../../login/login.component";
 import {AuthorizedUser} from "../../services/reglog/AuthorizedUser";
 
 @Component({

@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HeaderService} from "../services/shared/header.service";
 import {SummaryForList} from "./list-summary/SummaryForList";
 

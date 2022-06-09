@@ -16,9 +16,13 @@
               </tr>
               <tr>
                 <td><button type="button" class="button_sizer reg_log_button" routerLink="/registration-component">Регистрация</button></td>
-                <td class="contend_end"><button type="button" class="button_sizer reg_log_button" (click)="authenticate()">Войти</button></td>
+                <td class="contend_end"><button type="button" class="button_sizer reg_log_button" (click)="authenticate(notificationModal)">Войти</button></td>
               </tr>
             </table>
       </div>
   </div>
 </div>
+
+<ng-template #notificationModal let-modal>
+  <app-notification-box [notificationMessage]="this.notificationMessage" [modal]="modal"></app-notification-box>
+</ng-template>

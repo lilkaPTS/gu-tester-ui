@@ -1,0 +1,10 @@
+<div class="confirm_window">
+  <div class="confirm_window_text">Введите код подтверждения</div>
+  <div class="confirm_window_input">
+    <input [(ngModel)]="code">
+  </div>
+  <div class="confirm_window_buttons">
+    <button (click)="sendConfirmation()" class="button_margin">Отправить ещё раз</button>
+    <button (click)="checkConfirmation()">Подтвердить</button>
+  </div>
+</div>

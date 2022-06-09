@@ -13,6 +13,8 @@ import { SelectBoxComponent } from './shared/select-box/select-box.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
+import { ConfirmationCodeBoxComponent } from './shared/confirmation-code-box/confirmation-code-box.component';
+import { NotificationBoxComponent } from './shared/notification-box/notification-box.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {CommonModule} from "@angular/common";
     HeaderComponent,
     PersonalAccountComponent,
     ListSummaryComponent,
-    SelectBoxComponent
+    SelectBoxComponent,
+    ConfirmationCodeBoxComponent,
+    NotificationBoxComponent
   ],
   imports: [
     BrowserModule,

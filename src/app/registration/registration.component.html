@@ -14,32 +14,32 @@
           <tr>
             <td colspan="2">
               <div class="registration_text input_title_margin">Email*</div>
-              <div class="input_margin"><input></div>
+              <div class="input_margin"><input [(ngModel)]="email"></div>
             </td>
           </tr>
           <tr>
             <td colspan="2">
               <div class="registration_text input_title_margin">Имя*</div>
-              <div class="input_margin"><input></div>
+              <div class="input_margin"><input [(ngModel)]="name"></div>
             </td>
           </tr>
           <tr>
             <td colspan="2">
               <div class="registration_text input_title_margin">Пароль*</div>
-              <div class="input_margin"><input type="password"></div>
+              <div class="input_margin"><input [(ngModel)]="password" type="password" ></div>
             </td>
           </tr>
           <tr>
             <td colspan="2">
               <div class="registration_text input_title_margin">Подтвердите пароль*</div>
-              <div class="input_margin"><input type="password"></div>
+              <div class="input_margin"><input [(ngModel)]="confirmPassword" type="password"></div>
             </td>
           </tr>
           <tr *ngIf="registrationSwitcherValue">
             <td colspan="2">
               <div class="registration_text input_title_margin">Устройство*</div>
               <div class="input_margin">
-                <input type="text" [(ngModel)]="device" readonly (click)="open(mymodal,'устройства')">
+                <input class="select_input" type="text" [(ngModel)]="device" readonly (click)="openSelectBox(selectModal,'устройства')">
               </div>
             </td>
           </tr>
@@ -47,7 +47,7 @@
             <td colspan="2">
               <div class="registration_text input_title_margin">ОС*</div>
               <div class="input_margin">
-                <input type="text" [(ngModel)]="OS" readonly (click)="open(mymodal,'ОС')">
+                <input class="select_input" type="text" [(ngModel)]="OS" readonly (click)="openSelectBox(selectModal,'ОС')">
               </div>
             </td>
           </tr>
@@ -55,7 +55,7 @@
             <td colspan="2">
               <div class="registration_text input_title_margin">Сеть*</div>
               <div class="input_margin">
-                <input type="text" [(ngModel)]="networks" readonly (click)="open(mymodal, 'сети', 2)">
+                <input class="select_input" type="text" [(ngModel)]="networks" readonly (click)="openSelectBox(selectModal, 'сети', 2)">
               </div>
             </td>
           </tr>
@@ -63,13 +63,15 @@
             <td colspan="2">
               <div class="registration_text input_title_margin">Оператор*</div>
               <div class="input_margin">
-                <input type="text" [(ngModel)]="mobileOperator" readonly (click)="open(mymodal,'оператора')">
+                <input class="select_input" type="text" [(ngModel)]="mobileOperator" readonly (click)="openSelectBox(selectModal,'оператора')">
               </div>
             </td>
           </tr>
           <tr>
             <td><button type="button" class="button_sizer button_default_color reg_log_button" routerLink="/login-component">Авторизация</button></td>
-            <td class="contend_end"><button type="button" class="button_sizer button_default_color reg_log_button" routerLink="/personal-account-component">Зарегистрироваться</button></td>
+            <td class="contend_end">
+              <button type="button" (click)="registration(confirmModal, notificationModal)" class="button_sizer button_default_color reg_log_button">Зарегистрироваться</button>
+            </td>
           </tr>
         </table>
       </div>
@@ -77,6 +79,14 @@
   </div>
 </div>
 
-<ng-template #mymodal let-modal>
+<ng-template #notificationModal let-modal>
+  <app-notification-box [notificationMessage]="this.notificationMessage" [modal]="modal"></app-notification-box>
+</ng-template>
+
+<ng-template #confirmModal let-modal>
+  <app-confirmation-code-box [email]="this.email" [modal]="modal"></app-confirmation-code-box>
+</ng-template>
+
+<ng-template #selectModal let-modal>
   <app-select-box [selectableObject]="this.selectableObject" [modal]="modal" [limit]="limit" (outputArr) = "setInput($event)"></app-select-box>
 </ng-template>
