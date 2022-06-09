@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {SelectBoxService} from "../../services/select-box.service";
+import {SelectBoxService} from "../../services/shared/select-box.service";
 import {Observable} from "rxjs";
 
 @Component({

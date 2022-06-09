@@ -1,6 +1,5 @@
 import {Component, OnInit, Output} from '@angular/core';
-import {Role} from "../enums/Role";
-import {HeaderService} from "../services/header.service";
+import {HeaderService} from "../services/shared/header.service";
 import {SummaryForList} from "./list-summary/SummaryForList";
 
 @Component({
@@ -45,22 +44,6 @@ export class PersonalAccountComponent implements OnInit {
   constructor(private headerService: HeaderService) { }
 
   ngOnInit(): void {
-  }
-
-  setRoleNon():void {
-    this.headerService.setRole(Role.Non)
-  }
-
-  setRoleTester():void {
-    this.headerService.setRole(Role.Tester)
-  }
-
-  setRoleDeveloper():void {
-    this.headerService.setRole(Role.Developer)
-  }
-
-  setRoleAdministrator():void {
-    this.headerService.setRole(Role.Administrator)
   }
 }
 

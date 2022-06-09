@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Role} from "../../enums/Role";
 import {ActivatedRoute} from "@angular/router";
 import {PersonalAccountComponent} from "../../personal-account/personal-account.component";
-import {HeaderService} from "../../services/header.service";
+import {HeaderService} from "../../services/shared/header.service";
 import {Observable} from "rxjs";
+import {LoginComponent} from "../../login/login.component";
+import {AuthorizedUser} from "../../services/reglog/AuthorizedUser";
 
 @Component({
   selector: 'app-header',
@@ -12,14 +13,20 @@ import {Observable} from "rxjs";
 })
 export class HeaderComponent implements OnInit {
 
-  role$: Observable<Role>
-  authorization$: Observable<boolean>
+  authorizedUser: AuthorizedUser;
+  isAuthorized: boolean = false;
 
   constructor(
     private headerService: HeaderService
   ) {
-    this.role$=headerService.role
-    this.authorization$=headerService.authorization
+    headerService.authorizedUser$.subscribe((authorizedUser) => {
+      this.authorizedUser = authorizedUser;
+      this.isAuthorized = this.authorizedUser.role != null;
+    })
+  }
+
+  exit(): void {
+    this.headerService.setAuthorizedUser(new AuthorizedUser());
   }
 
   ngOnInit(): void {

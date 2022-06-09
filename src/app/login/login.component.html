@@ -5,21 +5,20 @@
               <tr>
                 <td colspan="2">
                   <div class="login_text input_title_margin">Email</div>
-                  <div class="input_margin"><input></div>
+                  <div class="input_margin"><input [(ngModel)]="email"></div>
                 </td>
               </tr>
               <tr>
                 <td colspan="2">
                   <div class="login_text input_title_margin">Пароль</div>
-                  <div class="input_margin"><input></div>
+                  <div class="input_margin"><input [(ngModel)]="password"></div>
                 </td>
               </tr>
               <tr>
                 <td><button type="button" class="button_sizer reg_log_button" routerLink="/registration-component">Регистрация</button></td>
-                <td class="contend_end"><button type="button" class="button_sizer reg_log_button" routerLink="/personal-account-component">Войти</button></td>
+                <td class="contend_end"><button type="button" class="button_sizer reg_log_button" (click)="authenticate()">Войти</button></td>
               </tr>
             </table>
       </div>
   </div>
 </div>
-

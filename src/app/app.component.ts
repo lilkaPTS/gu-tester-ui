@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Role} from "./enums/Role";
 
 @Component({
   selector: 'app-root',
