@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import { ConfirmationCodeBoxComponent } from './shared/confirmation-code-box/confirmation-code-box.component';
 import { NotificationBoxComponent } from './shared/notification-box/notification-box.component';
+import { CreateOrderComponent } from './personal-account/create-order/create-order.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NotificationBoxComponent } from './shared/notification-box/notification
     ListSummaryComponent,
     SelectBoxComponent,
     ConfirmationCodeBoxComponent,
-    NotificationBoxComponent
+    NotificationBoxComponent,
+    CreateOrderComponent
   ],
   imports: [
     BrowserModule,

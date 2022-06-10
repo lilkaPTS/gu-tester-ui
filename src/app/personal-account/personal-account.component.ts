@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderService} from "../services/shared/header.service";
 import {SummaryForList} from "./list-summary/SummaryForList";
+import {AuthorizedUser} from "../services/reglog/AuthorizedUser";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-personal-account',
@@ -9,6 +11,10 @@ import {SummaryForList} from "./list-summary/SummaryForList";
 })
 
 export class PersonalAccountComponent implements OnInit {
+
+  authorizedUser: AuthorizedUser;
+
+  buttonTest: string = "";
 
   waitingForApproval: SummaryForList[] = [
     {id: 17, text: "Агрегатор автомоек"}
@@ -37,13 +43,22 @@ export class PersonalAccountComponent implements OnInit {
     {id: 15, text: "Приложение для университета"},
   ]
 
-
-
-
-
-  constructor(private headerService: HeaderService) { }
+  constructor(private headerService: HeaderService,
+              private router: Router) {
+    headerService.authorizedUser$.subscribe((authorizedUser) => {
+      this.authorizedUser = authorizedUser;
+      if(authorizedUser.role == "DEVELOPER") {
+        this.buttonTest = "Создать заявку";
+      } else if(authorizedUser.role == "Tester") {
+        this.buttonTest = "Редактировать профиль";
+      }
+    })
+  }
 
   ngOnInit(): void {
+    if(!this.authorizedUser.email) {
+     // this.router.navigate(["/login-component"]);
+    }
   }
 }
 

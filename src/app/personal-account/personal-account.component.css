@@ -1,8 +1,8 @@
 .personal_account_window {
   width: 800px;
   height: 800px;
-  position: absolute;
-  top: 12%;
+  margin-top: 5%;
+
 }
 
 .personal_account_table {

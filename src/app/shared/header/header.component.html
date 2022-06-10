@@ -5,23 +5,20 @@
       <p class="logo_step2">GuTester</p>
     </div>
   </div>
-  <div class="col-lg-2"></div>
+  <div class="col-lg-1"></div>
 
 
-  <div class="col-lg-4 user_info_text" [ngClass]="isAuthorized ? '' : 'hidden'">
-    <table class="user_info_table">
-      <tr class="user_info_tr">
-        <td>{{authorizedUser.role}}</td>
-        <td>{{authorizedUser.name}}</td>
-        <td [ngClass]="authorizedUser.rating != 0 ? '' : 'missing'">Рейтинг: {{authorizedUser.rating}}</td>
-      </tr>
-    </table>
-  </div>
+<!--  <div class="col-lg-2 user_info" [ngClass]="{'hidden': !isAuthorized}">{{authorizedUser.role}}</div>-->
+<!--  <div class="col-lg-2 user_info" [ngClass]="{'hidden': !isAuthorized}">{{authorizedUser.name}}</div>-->
+<!--  <div class="col-lg-2 user_info" [ngClass]="{'hidden': !isAuthorized}">Рейтинг: {{authorizedUser.rating}}</div>-->
+
+  <div class="col-lg-2 user_info">DEVELOPER</div>
+  <div class="col-lg-2 user_info">Гудима Илья Алексеевич</div>
+  <div class="col-lg-2 user_info">Рейтинг: 4.23</div>
 
 
-
-  <div class="col-lg-3"></div>
-  <div class="col-lg-1">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-2">
     <button (click)="exit()" [ngClass]="isAuthorized ? '' : 'hidden'" class="button_exit" routerLink="/login-component">Выйти</button>
   </div>
 </div>
