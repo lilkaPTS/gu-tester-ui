@@ -15,6 +15,10 @@ export class OrderService {
     return this.http.get<OrderLowInfoDTO[]>(`${Constants.baseUrl}/api/personal/account/getAllOrderLowInfoByDeveloperEmail?developerEmail=`+developerEmail);
   }
 
+  getAllOrderLowInfo(): Observable<OrderLowInfoDTO[]> {
+    return this.http.get<OrderLowInfoDTO[]>(`${Constants.baseUrl}/api/personal/account/getAllOrderLowInfo`);
+  }
+
   getOrderFullInfoByOrderId(orderId: number): Observable<any> {
     return this.http.get<any>(`${Constants.baseUrl}/api/personal/account/getOrderFullInfoByOrderId?orderId=`+orderId);
   }

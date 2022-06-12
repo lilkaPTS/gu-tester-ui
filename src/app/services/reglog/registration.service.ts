@@ -49,7 +49,6 @@ export class RegistrationService {
     let formData: FormData = new FormData();
     formData.append('email', email);
     formData.append('code', code);
-    console.log(formData.get("email"))
     return this.http.put<any>(`${Constants.baseUrl}/api/reg/checkConfirmation`, formData);
   }
 

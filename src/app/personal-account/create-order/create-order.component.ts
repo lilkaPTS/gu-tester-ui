@@ -6,6 +6,7 @@ import {OpenModalService} from "../../services/shared/open-modal.service";
 import {OrderDTO} from "../../services/order/OrderDTO";
 import {ProcessOrderService} from "../../services/order/process-order.service";
 import {TransferDataService} from "../../services/shared/transfer-data.service";
+import {AdminService} from "../../services/admin/admin.service";
 
 @Component({
   selector: 'app-create-order',
@@ -17,6 +18,8 @@ export class CreateOrderComponent implements OnInit {
   prefillCreateOrder: any;
   orderId: number;
   status:string;
+
+  adminComment:string = "";
 
   authorizedUser: AuthorizedUser;
 
@@ -39,7 +42,8 @@ export class CreateOrderComponent implements OnInit {
     private processOrderService: ProcessOrderService,
     private router: Router,
     private openModalService: OpenModalService,
-    private transferDataService: TransferDataService
+    private transferDataService: TransferDataService,
+    private adminService: AdminService
   ) {
     headerService.authorizedUser$.subscribe((authorizedUser) => {
       this.authorizedUser = authorizedUser;
@@ -91,27 +95,35 @@ export class CreateOrderComponent implements OnInit {
     this.openModalService.open(content, 'lg');
   }
 
+  openAdminComment(content: any) {
+    this.openModalService.open(content, 'md');
+  }
 
   createOrder():void {
     this.processOrderService.createOrder(this.createOrderDTO()).subscribe(data => {
-      if(data) {
-        this.router.navigate(["/personal-account-component"])
-      } else {
-        alert("Что-то пошло не так!")
-      }
-    })
+      this.standardMove(data)
+    });
   }
 
   reopenOrder(): void {
     let dto: OrderDTO = this.createOrderDTO();
     dto.orderId = this.orderId;
     this.processOrderService.reopenOrder(dto).subscribe(data => {
-      if(data) {
-        this.router.navigate(["/personal-account-component"])
-      } else {
-        alert("Что-то пошло не так!")
-      }
-    })
+      this.standardMove(data)
+    });
+  }
+
+  rejectOrder(content: any): void {
+    this.adminService.rejectOrder(this.orderId, this.adminComment).subscribe(data => {
+      this.standardMove(data)
+      content.close();
+    });
+  }
+
+  approveOrder(): void {
+    this.adminService.approveOrder(this.orderId).subscribe(data => {
+      this.standardMove(data)
+    });
   }
 
   private createOrderDTO(): OrderDTO {
@@ -132,5 +144,13 @@ export class CreateOrderComponent implements OnInit {
     dto.mobileOperators =  this.mobileOperators;
     dto.networks = this.networks;
     return dto;
+  }
+
+  private standardMove(data: boolean): void {
+    if(data) {
+      this.router.navigate(["/personal-account-component"])
+    } else {
+      alert("Что-то пошло не так!")
+    }
   }
 }

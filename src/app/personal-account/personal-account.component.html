@@ -2,25 +2,28 @@
   <div class="col-lg-6">
     <div class="personal_account_window">
       <table class="personal_account_table">
-        <tr *ngIf="this.buttonText != ''">
-          <td class="text-center" colspan="2">
-            <button type="button" class="personal_account_button" (click)="open(selectOs)">{{this.buttonText}}</button>
+        <tr>
+          <td class="text-center" *ngIf="this.buttonText1 != ''">
+            <button type="button" class="personal_account_button" (click)="open(selectOs)">{{this.buttonText1}}</button>
+          </td>
+          <td class="text-center" *ngIf="this.buttonText2 != ''">
+            <button type="button" class="personal_account_button">{{this.buttonText2}}</button>
           </td>
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary (output)="selectSummary($event, rejectModal)" [header]="header1" [listSummary]="waitingForApproval"></app-list-summary>
+            <app-list-summary (output)="list1Handler($event, rejectModal)" [header]="header1" [listSummary]="list1"></app-list-summary>
           </td>
           <td class="personal_account_td" align="right">
-            <app-list-summary (output)="selectSummary($event)" [header]="header2" [listSummary]="approved"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event)" [header]="header2" [listSummary]="list2"></app-list-summary>
           </td>
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary (output)="selectSummary($event)" [header]="header3" [listSummary]="active"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event)" [header]="header3" [listSummary]="list3"></app-list-summary>
           </td>
           <td class="personal_account_td" align="right" *ngIf="header4!=''">
-            <app-list-summary  (output)="selectSummary($event)" [header]="header4" [listSummary]="completed"></app-list-summary>
+            <app-list-summary  (output)="selectSummary($event)" [header]="header4" [listSummary]="list4"></app-list-summary>
           </td>
         </tr>
       </table>

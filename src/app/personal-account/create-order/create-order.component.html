@@ -52,10 +52,15 @@
           <textarea class="textarea_description inputs" [(ngModel)]="orderDescription"></textarea>
         </div>
         <div align="right">
-          <div class="div_buttons">
-            <button class="button_sizer button_cancel" routerLink="/personal-account-component">Отмена</button>
+          <div class="div_buttons" *ngIf="authorizedUser.role == 'DEVELOPER'">
+            <button class="button_sizer button_margin" routerLink="/personal-account-component">Отмена</button>
             <button class="button_sizer" *ngIf="orderId==null" (click)="createOrder()">Создать</button>
             <button class="button_sizer" *ngIf="orderId!=null" (click)="reopenOrder()">Переоткрыть</button>
+          </div>
+          <div class="div_buttons" *ngIf="authorizedUser.role == 'ADMIN'">
+            <button class="button_sizer button_margin" routerLink="/personal-account-component">Отмена</button>
+            <button class="button_sizer button_margin" (click)="openAdminComment(adminCommentModal)">Отклонить</button>
+            <button class="button_sizer" (click)="approveOrder()">Одобрить</button>
           </div>
         </div>
       </div>
@@ -63,6 +68,11 @@
     <div class="col-2"></div>
   </div>
 </div>
+
+<ng-template #adminCommentModal let-modal>
+  <textarea [(ngModel)]="adminComment" class="textarea_admin_comment"></textarea>
+  <button (click)="rejectOrder(modal)">Подтвердить</button>
+</ng-template>
 
 <ng-template #selectModal let-modal>
   <app-select-box [selectableObject]="this.selectableObjects" [limit]="100"  [modal]="modal" (outputArr) = "setInput($event)"></app-select-box>
