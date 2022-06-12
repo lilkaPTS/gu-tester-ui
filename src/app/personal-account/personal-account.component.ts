@@ -3,6 +3,8 @@ import {HeaderService} from "../services/shared/header.service";
 import {SummaryForList} from "./list-summary/SummaryForList";
 import {AuthorizedUser} from "../services/reglog/AuthorizedUser";
 import {Router} from "@angular/router";
+import {OpenModalService} from "../services/shared/open-modal.service";
+import {ProcessOrderService} from "../services/order/process-order.service";
 
 @Component({
   selector: 'app-personal-account',
@@ -44,20 +46,38 @@ export class PersonalAccountComponent implements OnInit {
   ]
 
   constructor(private headerService: HeaderService,
-              private router: Router) {
+              private router: Router,
+              private openModalService: OpenModalService,
+              private processOrderService: ProcessOrderService) {
     headerService.authorizedUser$.subscribe((authorizedUser) => {
       this.authorizedUser = authorizedUser;
       if(authorizedUser.role == "DEVELOPER") {
         this.buttonTest = "Создать заявку";
-      } else if(authorizedUser.role == "Tester") {
+      } else if(authorizedUser.role == "TESTER") {
         this.buttonTest = "Редактировать профиль";
       }
     })
   }
 
+  iosClick(content: any) {
+    this.processOrderService.setOS("iOS")
+    this.router.navigate(["/create-order-component"]);
+    content.close();
+  }
+
+  androidClick(content: any) {
+    this.processOrderService.setOS("Android")
+    this.router.navigate(["/create-order-component"]);
+    content.close();
+  }
+
+  open(content: any) {
+    this.openModalService.open(content, 'sm');
+  }
+
   ngOnInit(): void {
     if(!this.authorizedUser.email) {
-     // this.router.navigate(["/login-component"]);
+     this.router.navigate(["/login-component"]);
     }
   }
 }

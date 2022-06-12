@@ -1,0 +1,75 @@
+.container {
+  margin-top: 4%;
+}
+
+.left_container {
+  width: 95%;
+}
+
+.right_container {
+  width: 95%;
+}
+
+.inputs {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 30px;
+  background: #FFFFFF;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+  font-family: 'Rubik';
+  font-size: 16px;
+  line-height: 17px;
+  color: #4E3C8F;
+}
+
+.select_input {
+  cursor: pointer;
+}
+
+.div_titles {
+  text-align: left;
+  font-family: 'Rubik';
+  font-size: 18px;
+  line-height: 22px;
+  color: #4E3C8F;
+  margin-bottom: 10px;
+}
+
+.textarea_description {
+  height: 194px;
+  width: 100%;
+  resize: none;
+}
+
+.textarea_description::-webkit-scrollbar-track {
+  background-color: #D8D2EE;
+}
+
+.textarea_description::-webkit-scrollbar {
+  width: 10px;
+}
+
+.textarea_description::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #4E3C8F;
+}
+
+.div_buttons {
+  margin-top: 26px;
+}
+
+.button_cancel {
+  margin-right: 45px;
+}
+
+.button_sizer {
+  width: 120px;
+  height: 30px;
+  font-family: 'Rubik';
+  font-size: 12px;
+  color: #4E3C8F;
+  background: #D8D2EE;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+}

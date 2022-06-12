@@ -25,4 +25,8 @@ export class SelectBoxService {
   getAllMobileOperator(): Observable<string[]> {
     return this.http.get<string[]>(`${Constants.baseUrl}/api/SelectInformation/getAllMobileOperatorNames`);
   }
+
+  getAllDeviceManufacturer(): Observable<string[]> {
+    return this.http.get<string[]>(`${Constants.baseUrl}/api/SelectInformation/getAllDeviceManufacturerNames`);
+  }
 }

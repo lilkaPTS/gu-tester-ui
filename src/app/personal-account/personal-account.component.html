@@ -4,8 +4,7 @@
       <table class="personal_account_table">
         <tr>
           <td class="text-center" colspan="2">
-<!--            <button type="button" class="personal_account_button">{{this.buttonTest}}</button>-->
-            <button type="button" class="personal_account_button">Создать заявку</button>
+            <button type="button" class="personal_account_button" (click)="open(selectOs)">{{this.buttonTest}}</button>
           </td>
         </tr>
         <tr>
@@ -28,3 +27,10 @@
     </div>
   </div>
 </div>
+
+<ng-template #selectOs let-modal>
+  <div>
+    <button (click)="iosClick(modal)">iOS</button>
+    <button (click)="androidClick(modal)">Android</button>
+  </div>
+</ng-template>

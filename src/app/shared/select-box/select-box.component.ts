@@ -35,8 +35,10 @@ export class SelectBoxComponent implements OnInit {
       initObservable = this.selectBoxService.getAllOs();
     } else if(this.selectableObject == 'сети') {
       initObservable = this.selectBoxService.getAllNetwork();
-    } else if(this.selectableObject == 'оператора') {
+    } else if(this.selectableObject == 'оператора сотовой связи') {
       initObservable = this.selectBoxService.getAllMobileOperator();
+    } else if(this.selectableObject == 'производителя') {
+      initObservable = this.selectBoxService.getAllDeviceManufacturer();
     }
     initObservable.subscribe((data: string[]) => {
       this.selectableObject = "Выбор " + this.selectableObject;

@@ -1,4 +1,4 @@
-import {RegistrationDTO} from "./registrationDTO";
+import {RegistrationDTO} from "./RegistrationDTO";
 
 export class TesterRegistrationDTO extends RegistrationDTO {
 

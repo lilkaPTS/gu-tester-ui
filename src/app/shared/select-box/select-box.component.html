@@ -8,7 +8,7 @@
   </div>
   <table class="select_table_grid" align="center">
     <tr *ngFor="let wl1 of printArray">
-      <td *ngFor="let wl2 of wl1" (click)="focusItem(wl2)"
+      <td class="td_text" *ngFor="let wl2 of wl1" (click)="focusItem(wl2)"
           [ngClass]="{
           'empty' : !this.workingArr.includes(wl2),
           'selected_item': this.selectedItems.includes(wl2),

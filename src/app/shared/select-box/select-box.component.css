@@ -17,6 +17,10 @@
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
+.td_text {
+  cursor: pointer;
+}
+
 .select_table_grid {
   margin: auto;
   border-collapse: separate;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Constants} from "../../shared/Constants";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TesterRegistrationDTO} from "../../registration/TesterRegistrationDTO";
-import {RegistrationDTO} from "../../registration/registrationDTO";
+import {RegistrationDTO} from "../../registration/RegistrationDTO";
 import {Observable} from "rxjs";
 
 @Injectable({

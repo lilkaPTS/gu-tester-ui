@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {RegistrationService} from "../services/reglog/registration.service";
-import {RegistrationDTO} from "./registrationDTO";
+import {RegistrationDTO} from "./RegistrationDTO";
 import {TesterRegistrationDTO} from "./TesterRegistrationDTO";
 import {OpenModalService} from "../services/shared/open-modal.service";
 
@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
       this.OS = output;
     } else if(this.selectableObject == 'сети') {
       this.networks = output;
-    } else if(this.selectableObject == 'оператора') {
+    } else if(this.selectableObject == 'оператора сотовой связи') {
       this.mobileOperator = output;
     }
   }

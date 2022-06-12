@@ -1,1 +1,68 @@
-<p>create-order works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-4">
+      <div class="left_container">
+        <div>
+          <div class="div_titles">Количество тестировщиков*</div>
+          <input class="inputs" [(ngModel)]="requiredNumberOfTesters">
+        </div>
+        <div>
+          <div class="div_titles">Ос</div>
+          <input class="inputs select_input" type="text" [(ngModel)]="osList" readonly (click)="openSelectBox(selectModal,'ОС')">
+        </div>
+        <div>
+          <div class="div_titles">Производитель устройства</div>
+          <input class="inputs select_input" [(ngModel)]="deviceManufacturers" (click)="openSelectBox(selectModal,'производителя')" readonly>
+        </div>
+        <div>
+          <div class="div_titles">Устройство</div>
+          <input class="inputs select_input" [(ngModel)]="devices" (click)="openSelectBox(selectModal,'устройства')" readonly>
+        </div>
+        <div>
+          <div class="div_titles">Сеть</div>
+          <input class="inputs select_input" [(ngModel)]="networks" (click)="openSelectBox(selectModal,'сети')" readonly>
+        </div>
+        <div>
+          <div class="div_titles">Оператор сотовой связи</div>
+          <input class="inputs select_input" [(ngModel)]="mobileOperators" (click)="openSelectBox(selectModal,'оператора сотовой связи')" readonly>
+        </div>
+        <div>
+          <div class="div_titles">Года выпуска устройств</div>
+          <input class="inputs" [(ngModel)]="releaseYearString">
+        </div>
+      </div>
+    </div>
+    <div class="col-4" align="right">
+      <div class="right_container">
+        <div>
+          <div class="div_titles">Email для связи</div>
+          <input class="inputs" [(ngModel)]="contactEmail">
+        </div>
+        <div>
+          <div class="div_titles">Ссылка на источник*</div>
+          <input class="inputs" [(ngModel)]="sourceLink">
+        </div>
+        <div>
+          <div class="div_titles">Аннотация*</div>
+          <input class="inputs" [(ngModel)]="orderTitle">
+        </div>
+        <div>
+          <div class="div_titles">Описание проекта*</div>
+          <textarea class="textarea_description inputs" [(ngModel)]="orderDescription"></textarea>
+        </div>
+        <div align="right">
+          <div class="div_buttons">
+            <button class="button_sizer button_cancel" routerLink="/personal-account-component">Отмена</button>
+            <button class="button_sizer" (click)="createOrder()">Создать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
+
+<ng-template #selectModal let-modal>
+  <app-select-box [selectableObject]="this.selectableObjects" [limit]="100"  [modal]="modal" (outputArr) = "setInput($event)"></app-select-box>
+</ng-template>
