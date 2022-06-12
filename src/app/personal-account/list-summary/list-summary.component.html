@@ -4,5 +4,7 @@
   </div>
 </div>
 <div class="list_summary_window">
-  <div align="left" class="p_summary" *ngFor="let summary of listSummary">{{summary.id}} : {{summary.text}}</div>
+  <div (click)="select(summary)" align="left" class="p_summary" *ngFor="let summary of listSummary">{{summary.id}} : {{summary.text}}</div>
 </div>
+
+

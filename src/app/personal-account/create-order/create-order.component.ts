@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthorizedUser} from "../../services/reglog/AuthorizedUser";
 import {HeaderService} from "../../services/shared/header.service";
 import {Router} from "@angular/router";
@@ -12,6 +12,8 @@ import {ProcessOrderService} from "../../services/order/process-order.service";
   styleUrls: ['./create-order.component.css']
 })
 export class CreateOrderComponent implements OnInit {
+
+  @Input() orderId: number;
 
   authorizedUser: AuthorizedUser;
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SummaryForList} from "./SummaryForList";
 
 @Component({
@@ -10,10 +10,15 @@ export class ListSummaryComponent implements OnInit {
 
   @Input() listSummary: SummaryForList[]
   @Input() header: string
+  @Output() output = new EventEmitter<SummaryForList>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  select(summary: SummaryForList, content?: any): void {
+    this.output.emit(summary);
   }
 
 }

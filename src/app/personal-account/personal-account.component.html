@@ -9,18 +9,18 @@
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary [header]="'Ждут одобрения администратора'" [listSummary]="waitingForApproval"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event)" [header]="'Ждут одобрения администратора'" [listSummary]="waitingForApproval"></app-list-summary>
           </td>
           <td class="personal_account_td" align="right">
-            <app-list-summary [header]="'Одобренные'" [listSummary]="approved"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event)" [header]="'Одобренные'" [listSummary]="approved"></app-list-summary>
           </td>
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary [header]="'Текущие'" [listSummary]="current"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event)" [header]="'Текущие'" [listSummary]="active"></app-list-summary>
           </td>
           <td class="personal_account_td" align="right">
-            <app-list-summary [header]="'Законченные'" [listSummary]="completed"></app-list-summary>
+            <app-list-summary  (output)="selectSummary($event)" [header]="'Законченные'" [listSummary]="completed"></app-list-summary>
           </td>
         </tr>
       </table>
