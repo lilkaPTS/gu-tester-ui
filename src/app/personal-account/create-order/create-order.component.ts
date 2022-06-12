@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {OpenModalService} from "../../services/shared/open-modal.service";
 import {OrderDTO} from "../../services/order/OrderDTO";
 import {ProcessOrderService} from "../../services/order/process-order.service";
+import {TransferDataService} from "../../services/shared/transfer-data.service";
 
 @Component({
   selector: 'app-create-order',
@@ -13,7 +14,9 @@ import {ProcessOrderService} from "../../services/order/process-order.service";
 })
 export class CreateOrderComponent implements OnInit {
 
-  @Input() orderId: number;
+  prefillCreateOrder: any;
+  orderId: number;
+  status:string;
 
   authorizedUser: AuthorizedUser;
 
@@ -35,12 +38,32 @@ export class CreateOrderComponent implements OnInit {
     private headerService: HeaderService,
     private processOrderService: ProcessOrderService,
     private router: Router,
-    private openModalService: OpenModalService
+    private openModalService: OpenModalService,
+    private transferDataService: TransferDataService
   ) {
     headerService.authorizedUser$.subscribe((authorizedUser) => {
       this.authorizedUser = authorizedUser;
+      this.contactEmail = this.authorizedUser.email;
+      transferDataService.prefillCreateOrder$.subscribe((data)=>{
+        this.prefillCreateOrder = data;
+        this.sourceLink = this.prefillCreateOrder.sourceLink;
+        this.orderTitle = this.prefillCreateOrder.title;
+        this.orderDescription = this.prefillCreateOrder.description;
+        this.requiredNumberOfTesters = this.prefillCreateOrder.requiredNumberOfTesters;
+        let releaseYearString = this.prefillCreateOrder.deviceReleaseYearStart + "-" + this.prefillCreateOrder.deviceReleaseYearEnd
+        releaseYearString = releaseYearString.replace("null-null", "");
+        releaseYearString = releaseYearString.replace("-null", "");
+        this.releaseYearString = releaseYearString;
+        this.contactEmail = this.prefillCreateOrder.contactEmail;
+        this.osList = this.prefillCreateOrder.osList;
+        this.devices = this.prefillCreateOrder.devices;
+        this.deviceManufacturers = this.prefillCreateOrder.deviceManufacturers
+        this.mobileOperators = this.prefillCreateOrder.mobileOperators;
+        this.networks = this.prefillCreateOrder.networks;
+        this.orderId = this.prefillCreateOrder.orderId;
+        this.status = this.prefillCreateOrder.status;
+      })
     })
-    this.contactEmail = this.authorizedUser.email;
   }
 
   ngOnInit(): void {
@@ -70,6 +93,28 @@ export class CreateOrderComponent implements OnInit {
 
 
   createOrder():void {
+    this.processOrderService.createOrder(this.createOrderDTO()).subscribe(data => {
+      if(data) {
+        this.router.navigate(["/personal-account-component"])
+      } else {
+        alert("Что-то пошло не так!")
+      }
+    })
+  }
+
+  reopenOrder(): void {
+    let dto: OrderDTO = this.createOrderDTO();
+    dto.orderId = this.orderId;
+    this.processOrderService.reopenOrder(dto).subscribe(data => {
+      if(data) {
+        this.router.navigate(["/personal-account-component"])
+      } else {
+        alert("Что-то пошло не так!")
+      }
+    })
+  }
+
+  private createOrderDTO(): OrderDTO {
     let dto = new OrderDTO();
     dto.developerEmail = this.authorizedUser.email;
     dto.sourceLink = this.sourceLink;
@@ -86,13 +131,6 @@ export class CreateOrderComponent implements OnInit {
     dto.deviceManufacturers = this.deviceManufacturers;
     dto.mobileOperators =  this.mobileOperators;
     dto.networks = this.networks;
-    console.log("dto -->> " + dto)
-    this.processOrderService.createOrder(dto).subscribe(data => {
-      if(data) {
-        this.router.navigate(["/personal-account-component"])
-      } else {
-        alert("Что-то пошло не так!")
-      }
-    })
+    return dto;
   }
 }

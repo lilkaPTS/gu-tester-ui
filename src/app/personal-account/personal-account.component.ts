@@ -6,6 +6,9 @@ import {Router} from "@angular/router";
 import {OpenModalService} from "../services/shared/open-modal.service";
 import {ProcessOrderService} from "../services/order/process-order.service";
 import {OrderService} from "../services/order/order.service";
+import {dashCaseToCamelCase} from "@angular/compiler/src/util";
+import {TransferDataService} from "../services/shared/transfer-data.service";
+import {delay, timer} from "rxjs";
 
 @Component({
   selector: 'app-personal-account',
@@ -14,6 +17,10 @@ import {OrderService} from "../services/order/order.service";
 })
 
 export class PersonalAccountComponent implements OnInit {
+
+  adminComment: string = "";
+
+  selectedRejectId: number;
 
   rejectSummaryModal: any;
 
@@ -35,7 +42,8 @@ export class PersonalAccountComponent implements OnInit {
               private router: Router,
               private openModalService: OpenModalService,
               private processOrderService: ProcessOrderService,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private transferDataService: TransferDataService) {
     headerService.authorizedUser$.subscribe((authorizedUser) => {
       this.authorizedUser = authorizedUser;
       if(authorizedUser.role == "DEVELOPER") {
@@ -75,6 +83,11 @@ export class PersonalAccountComponent implements OnInit {
     if(!this.rejected.includes(output) && this.waitingForApproval.includes(output)) {
       console.log(output.text + " ждёт одобрения!");
     } else if(this.rejected.includes(output)) {
+      this.selectedRejectId = output.id ? output.id : -1;
+      this.orderService.getAdminCommentByOrderId(this.selectedRejectId).subscribe(data => {
+        this.adminComment = data.adminComment;
+      })
+      this.openModalService.open(content, "md")
       console.log(output.text + " это отклонённый");
     } else if(this.approved.includes(output)) {
       console.log(output.text + " это одобренный");
@@ -85,14 +98,34 @@ export class PersonalAccountComponent implements OnInit {
     }
   }
 
-  func() {
-    open(this.rejectSummaryModal)
+  removeOrder(content:any) {
+    this.orderService.removeOrderByOrderId(this.selectedRejectId).subscribe(data => {
+      if(data) {
+        for (let i = 0; i < this.waitingForApproval.length; i++) {
+          if(this.waitingForApproval[i].id == this.selectedRejectId) {
+            this.waitingForApproval.splice(i, 1);
+          }
+        }
+        alert("Заявка удалена!")
+      } else {
+        alert("Что-то пошло не так!")
+      }
+    })
+    content.close();
+  }
+
+  async reopenOrder(content:any) {
+    this.orderService.getOrderFullInfoByOrderId(this.selectedRejectId).subscribe( data => {
+      this.transferDataService.setPrefillCreateOrder(data);
+      this.router.navigate(["/create-order-component"]);
+      content.close();
+    })
   }
 
 
   iosClick(content: any) {
     this.processOrderService.setOS("iOS")
-    this.router.navigate(["/create-orer-component"]);
+    this.router.navigate(["/create-order-component"])
     content.close();
   }
 

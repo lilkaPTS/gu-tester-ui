@@ -54,7 +54,8 @@
         <div align="right">
           <div class="div_buttons">
             <button class="button_sizer button_cancel" routerLink="/personal-account-component">Отмена</button>
-            <button class="button_sizer" (click)="createOrder()">Создать</button>
+            <button class="button_sizer" *ngIf="orderId==null" (click)="createOrder()">Создать</button>
+            <button class="button_sizer" *ngIf="orderId!=null" (click)="reopenOrder()">Переоткрыть</button>
           </div>
         </div>
       </div>

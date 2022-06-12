@@ -15,9 +15,16 @@ export class OrderService {
     return this.http.get<OrderLowInfoDTO[]>(`${Constants.baseUrl}/api/personal/account/getAllOrderLowInfoByDeveloperEmail?developerEmail=`+developerEmail);
   }
 
-  getAdminCommentByOrderId(orderId: number): Observable<string> {
-    return this.http.get<string>(`${Constants.baseUrl}/api/personal/account/getAdminCommentByOrderId?orderId=`+orderId);
+  getOrderFullInfoByOrderId(orderId: number): Observable<any> {
+    return this.http.get<any>(`${Constants.baseUrl}/api/personal/account/getOrderFullInfoByOrderId?orderId=`+orderId);
+  }
 
+  getAdminCommentByOrderId(orderId: number): Observable<any> {
+    return this.http.get<any>(`${Constants.baseUrl}/api/personal/account/getAdminCommentByOrderId?orderId=`+orderId);
+  }
+
+  removeOrderByOrderId(orderId: number): Observable<boolean> {
+    return this.http.delete<boolean>(`${Constants.baseUrl}/api/personal/account/removeOrderByOrderId?orderId=`+orderId);
   }
 
 }

@@ -9,7 +9,7 @@
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary (output)="selectSummary($event)" [header]="'Ждут одобрения администратора'" [listSummary]="waitingForApproval"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event, rejectModal)" [header]="'Ждут одобрения администратора'" [listSummary]="waitingForApproval"></app-list-summary>
           </td>
           <td class="personal_account_td" align="right">
             <app-list-summary (output)="selectSummary($event)" [header]="'Одобренные'" [listSummary]="approved"></app-list-summary>
@@ -27,6 +27,16 @@
     </div>
   </div>
 </div>
+
+<ng-template #rejectModal let-modal>
+  <div>
+    {{adminComment}}
+  </div>
+  <div>
+    <button (click)="removeOrder(modal)">Удалить</button>
+    <button (click)="reopenOrder(modal)">Переоткрыть</button>
+  </div>
+</ng-template>
 
 <ng-template #selectOs let-modal>
   <div>

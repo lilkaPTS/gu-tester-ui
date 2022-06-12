@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {TesterRegistrationDTO} from "../../registration/TesterRegistrationDTO";
 import {BehaviorSubject, Observable, take} from "rxjs";
 import {Constants} from "../../shared/Constants";
 import {OrderDTO} from "./OrderDTO";
-import {AuthorizedUser} from "../reglog/AuthorizedUser";
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +29,9 @@ export class ProcessOrderService {
 
   constructor(private http: HttpClient) { }
 
-  createOrder (dto: OrderDTO): Observable<any> {
-    let request = {
+  private createRequest (dto: OrderDTO): any {
+    return {
+      "orderId": dto.orderId,
       "developerEmail": dto.developerEmail,
       "osName": this.os.getValue(),
       "sourceLink": dto.sourceLink,
@@ -47,8 +46,17 @@ export class ProcessOrderService {
       "deviceManufacturers": dto.deviceManufacturers,
       "mobileOperators": dto.mobileOperators,
       "networks": dto.networks
-    }
-    return this.http.post<any>(`${Constants.baseUrl}/api/order/createOrder`, request, this.httpOptions);
+    };
   }
+
+  createOrder (dto: OrderDTO): Observable<any> {
+    return this.http.post<any>(`${Constants.baseUrl}/api/order/createOrder`, this.createRequest(dto), this.httpOptions);
+  }
+
+  reopenOrder (dto: OrderDTO): Observable<any> {
+    return this.http.post<any>(`${Constants.baseUrl}/api/order/reopenOrder`, this.createRequest(dto), this.httpOptions);
+  }
+
+
 
 }

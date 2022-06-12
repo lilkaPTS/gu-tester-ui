@@ -1,11 +1,5 @@
 export class OrderDTO {
-  get osList(): string[] {
-    return this._osList;
-  }
-
-  set osList(value: string[]) {
-    this._osList = value;
-  }
+  private _orderId: number;
   private _developerEmail: string;
   private _osName: string;
   private _requiredNumberOfTesters: number;
@@ -24,6 +18,14 @@ export class OrderDTO {
   constructor() {
   }
 
+
+  get orderId(): number {
+    return this._orderId;
+  }
+
+  set orderId(value: number) {
+    this._orderId = value;
+  }
 
   get developerEmail(): string {
     return this._developerEmail;
@@ -47,6 +49,14 @@ export class OrderDTO {
 
   set requiredNumberOfTesters(value: number) {
     this._requiredNumberOfTesters = value;
+  }
+
+  get osList(): string[] {
+    return this._osList;
+  }
+
+  set osList(value: string[]) {
+    this._osList = value;
   }
 
   get deviceManufacturers(): string[] {
