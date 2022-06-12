@@ -18,25 +18,26 @@ import {delay, timer} from "rxjs";
 
 export class PersonalAccountComponent implements OnInit {
 
+  header1: string = "";
+  header2: string = "";
+  header3: string = "";
+  header4: string = "";
+
+  waitingForApproval: SummaryForList[] = []
+  approved: SummaryForList[] = []
+  active: SummaryForList[] = []
+  completed: SummaryForList[] = []
+
   adminComment: string = "";
 
   selectedRejectId: number;
 
-  rejectSummaryModal: any;
-
   authorizedUser: AuthorizedUser;
 
-  buttonTest: string = "";
+  buttonText: string = "";
 
   rejected: SummaryForList[] = []
 
-  waitingForApproval: SummaryForList[] = []
-
-  approved: SummaryForList[] = []
-
-  active: SummaryForList[] = []
-
-  completed: SummaryForList[] = []
 
   constructor(private headerService: HeaderService,
               private router: Router,
@@ -47,9 +48,21 @@ export class PersonalAccountComponent implements OnInit {
     headerService.authorizedUser$.subscribe((authorizedUser) => {
       this.authorizedUser = authorizedUser;
       if(authorizedUser.role == "DEVELOPER") {
-        this.buttonTest = "Создать заявку";
+        this.buttonText = "Создать заявку";
+        this.header1 = 'Ждут одобрения администратора';
+        this.header2 = 'Одобренные';
+        this.header3 = 'Текущие';
+        this.header4 = 'Законченные';
       } else if(authorizedUser.role == "TESTER") {
-        this.buttonTest = "Редактировать профиль";
+        this.buttonText = "Редактировать профиль";
+        this.header1 = 'Приглашения';
+        this.header2 = 'Текущие';
+        this.header3 = 'Законченные';
+      } else if(authorizedUser.role == "ADMIN") {
+        this.header1 = 'Ждут одобрения администратора';
+        this.header2 = 'Текущие';
+        this.header3 = 'Законченные';
+        this.header4 = 'Устройства';
       }
     })
     this.fillSummaryLists();
@@ -60,40 +73,47 @@ export class PersonalAccountComponent implements OnInit {
       this.orderService.getAllOrderLowInfoByDeveloperEmail(this.authorizedUser.email).subscribe(data => {
         for (let i = 0; i < data.length; i++) {
           if(data[i].status == "CONFIRMATION") {
-            this.waitingForApproval.push({id: data[i].orderId, text: data[i].title});
+            this.waitingForApproval.push({id: data[i].orderId, text: data[i].title, status: data[i].status});
           } else if(data[i].status == "REJECT") {
-            let summary: SummaryForList = {id: data[i].orderId, text: data[i].title};
+            let summary: SummaryForList = {id: data[i].orderId, text: data[i].title, status: data[i].status};
             this.rejected.push(summary);
             this.waitingForApproval.push(summary);
           } else if(data[i].status == "APPROVED") {
-            this.approved.push({id: data[i].orderId, text: data[i].title})
+            this.approved.push({id: data[i].orderId, text: data[i].title, status: data[i].status})
           } else if(data[i].status == 'ACTIVE') {
-            this.active.push({id: data[i].orderId, text: data[i].title})
+            this.active.push({id: data[i].orderId, text: data[i].title, status: data[i].status})
           } else if(data[i].status == 'FINISHED') {
-            this.completed.push({id: data[i].orderId, text: data[i].title})
+            this.completed.push({id: data[i].orderId, text: data[i].title, status: data[i].status})
           }
         }
+        this.waitingForApproval.sort((a, b) => a.id - b.id);
+        this.approved.sort((a, b) => a.id - b.id);
+        this.active.sort((a, b) => a.id - b.id);
+        this.completed.sort((a, b) => a.id - b.id);
       });
     } else if(this.authorizedUser.role == "TESTER") {
 
+    } else if(this.authorizedUser.role == "ADMIN") {
+
     }
+
   }
 
   selectSummary(output: SummaryForList, content?: any) {
-    if(!this.rejected.includes(output) && this.waitingForApproval.includes(output)) {
+    if(output.status == "CONFIRMATION") {
       console.log(output.text + " ждёт одобрения!");
-    } else if(this.rejected.includes(output)) {
+    } else if(output.status == "REJECT") {
       this.selectedRejectId = output.id ? output.id : -1;
       this.orderService.getAdminCommentByOrderId(this.selectedRejectId).subscribe(data => {
         this.adminComment = data.adminComment;
       })
       this.openModalService.open(content, "md")
       console.log(output.text + " это отклонённый");
-    } else if(this.approved.includes(output)) {
+    } else if(output.status == "APPROVED") {
       console.log(output.text + " это одобренный");
-    } else if(this.active.includes(output)) {
+    } else if(output.status == "ACTIVE") {
       console.log(output.text + " это текущий");
-    } else if(this.completed.includes(output)) {
+    } else if(output.status == "FINISHED") {
       console.log(output.text + " это законченный");
     }
   }

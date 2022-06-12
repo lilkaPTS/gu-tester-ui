@@ -12,10 +12,14 @@ export class ListSummaryComponent implements OnInit {
   @Input() header: string
   @Output() output = new EventEmitter<SummaryForList>();
 
-  constructor() { }
+  printArray: SummaryForList[];
+  constructor() {
+
+  }
 
   ngOnInit(): void {
   }
+
 
   select(summary: SummaryForList, content?: any): void {
     this.output.emit(summary);

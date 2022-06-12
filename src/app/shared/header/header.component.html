@@ -8,9 +8,9 @@
   <div class="col-lg-1"></div>
 
 
-  <div class="col-lg-2 user_info" [ngClass]="{'hidden': !isAuthorized}">{{authorizedUser.role}}</div>
-  <div class="col-lg-2 user_info" [ngClass]="{'hidden': !isAuthorized}">{{authorizedUser.name}}</div>
-  <div class="col-lg-2 user_info" [ngClass]="{'hidden': !isAuthorized}">Рейтинг: {{authorizedUser.rating}}</div>
+  <div class="user_info" [ngClass]="{'col-lg-2': authorizedUser.rating!=0,'col-lg-3': authorizedUser.rating==0,'hidden': !isAuthorized}">{{authorizedUser.role}}</div>
+  <div class="user_info" [ngClass]="{'col-lg-2': authorizedUser.rating!=0,'col-lg-3': authorizedUser.rating==0,'hidden': !isAuthorized}">{{authorizedUser.name}}</div>
+  <div class="col-lg-2 user_info" *ngIf="authorizedUser.rating!=0" [ngClass]="{'hidden': !isAuthorized}">Рейтинг: {{authorizedUser.rating}}</div>
 
 <!--  <div class="col-lg-2 user_info">DEVELOPER</div>-->
 <!--  <div class="col-lg-2 user_info">Гудима Илья Алексеевич</div>-->
@@ -18,7 +18,7 @@
 
 
   <div class="col-lg-1"></div>
-  <div class="col-lg-2">
+  <div class="col-lg-2 div_button_exit">
     <button (click)="exit()" [ngClass]="isAuthorized ? '' : 'hidden'" class="button_exit" routerLink="/login-component">Выйти</button>
   </div>
 </div>

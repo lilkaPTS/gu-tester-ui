@@ -1,4 +1,5 @@
 export interface SummaryForList {
-  id?: number;
+  id: number;
   text: string;
+  status: string;
 }

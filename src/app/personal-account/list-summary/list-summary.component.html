@@ -4,7 +4,10 @@
   </div>
 </div>
 <div class="list_summary_window">
-  <div (click)="select(summary)" align="left" class="p_summary" *ngFor="let summary of listSummary">{{summary.id}} : {{summary.text}}</div>
+  <div (click)="select(summary)" align="left" class="p_summary" *ngFor="let summary of listSummary">
+    {{summary.id}} : {{summary.text}}
+    <br>
+    <div class="status_REJECT" *ngIf="summary.status == 'REJECT'">Отклонено</div>
 </div>
 
 

@@ -2,25 +2,25 @@
   <div class="col-lg-6">
     <div class="personal_account_window">
       <table class="personal_account_table">
-        <tr>
+        <tr *ngIf="this.buttonText != ''">
           <td class="text-center" colspan="2">
-            <button type="button" class="personal_account_button" (click)="open(selectOs)">{{this.buttonTest}}</button>
+            <button type="button" class="personal_account_button" (click)="open(selectOs)">{{this.buttonText}}</button>
           </td>
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary (output)="selectSummary($event, rejectModal)" [header]="'Ждут одобрения администратора'" [listSummary]="waitingForApproval"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event, rejectModal)" [header]="header1" [listSummary]="waitingForApproval"></app-list-summary>
           </td>
           <td class="personal_account_td" align="right">
-            <app-list-summary (output)="selectSummary($event)" [header]="'Одобренные'" [listSummary]="approved"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event)" [header]="header2" [listSummary]="approved"></app-list-summary>
           </td>
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary (output)="selectSummary($event)" [header]="'Текущие'" [listSummary]="active"></app-list-summary>
+            <app-list-summary (output)="selectSummary($event)" [header]="header3" [listSummary]="active"></app-list-summary>
           </td>
-          <td class="personal_account_td" align="right">
-            <app-list-summary  (output)="selectSummary($event)" [header]="'Законченные'" [listSummary]="completed"></app-list-summary>
+          <td class="personal_account_td" align="right" *ngIf="header4!=''">
+            <app-list-summary  (output)="selectSummary($event)" [header]="header4" [listSummary]="completed"></app-list-summary>
           </td>
         </tr>
       </table>

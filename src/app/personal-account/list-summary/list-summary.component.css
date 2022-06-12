@@ -48,3 +48,7 @@
   font-size: 14px;
   color: #4E3C8F;
 }
+
+.status_REJECT {
+  color: red;
+}
