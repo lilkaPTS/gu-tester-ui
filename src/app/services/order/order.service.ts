@@ -31,4 +31,7 @@ export class OrderService {
     return this.http.delete<boolean>(`${Constants.baseUrl}/api/personal/account/removeOrderByOrderId?orderId=`+orderId);
   }
 
+  getUnapprovedTestersByOrderId(orderId: number):Observable<any> {
+    return this.http.get<any>(`${Constants.baseUrl}/api/personal/account/getUnapprovedTestersByOrderId?orderId=`+orderId);
+  }
 }

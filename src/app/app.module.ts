@@ -16,6 +16,7 @@ import { ConfirmationCodeBoxComponent } from './shared/confirmation-code-box/con
 import { NotificationBoxComponent } from './shared/notification-box/notification-box.component';
 import { CreateOrderComponent } from './personal-account/create-order/create-order.component';
 import {SelectBoxComponent} from "./shared/select-box/select-box.component";
+import { ApproveOrderComponent } from './personal-account/approve-order/approve-order.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {SelectBoxComponent} from "./shared/select-box/select-box.component";
     SelectBoxComponent,
     ConfirmationCodeBoxComponent,
     NotificationBoxComponent,
-    CreateOrderComponent
+    CreateOrderComponent,
+    ApproveOrderComponent
   ],
   imports: [
     BrowserModule,

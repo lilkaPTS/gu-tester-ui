@@ -57,6 +57,7 @@ export class ProcessOrderService {
     return this.http.post<any>(`${Constants.baseUrl}/api/order/reopenOrder`, this.createRequest(dto), this.httpOptions);
   }
 
-
-
+  setApprovedTesters(orderId: number, emails: string[]): Observable<any> {
+    return this.http.post<any>(`${Constants.baseUrl}/api/order/setApprovedTesters`, {"orderId": orderId, "emails" : emails}, this.httpOptions);
+  }
 }

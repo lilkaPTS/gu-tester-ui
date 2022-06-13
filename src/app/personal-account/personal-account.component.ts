@@ -135,6 +135,17 @@ export class PersonalAccountComponent implements OnInit {
     }
   }
 
+  list2Handler(output: SummaryForList, content?: any) {
+    if(this.authorizedUser.role == "DEVELOPER") {
+      this.transferDataService.setSelectedSummary(output);
+      this.router.navigate(["/approve-order-component"])
+    } else if(this.authorizedUser.role == "TESTER") {
+
+    } else if(this.authorizedUser.role == "ADMIN") {
+
+    }
+  }
+
   selectSummary(output: SummaryForList, content?: any) {
     if(output.status == "CONFIRMATION") {
       console.log(output.text + " ждёт одобрения!");

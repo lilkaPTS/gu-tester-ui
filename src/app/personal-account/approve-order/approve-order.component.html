@@ -1,0 +1,68 @@
+<div class="container container_margin">
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-3" align="centor">
+      <div class="text">{{selectedSummary.id}}: {{selectedSummary.text}}</div>
+    </div>
+    <div class="col-lg-4">
+      <div class="text">Список отобранных сервисом тестировщиков</div>
+      <div class="list_window">
+        <div class="list_title">Выбрано {{requiredTesterNumber}} из {{requiredTesterNumberFinal}} возможных</div>
+        <div class="list_window_div" *ngFor="let tester of testerDTO">
+          <div class="list_window_div_table">
+            <table class="list_window_table">
+              <tr>
+                <td class="list_window_table_img"><img src="../../../assets/pictures/approveOrderComponent/bear.png"
+                                                       height="30" width="30"/></td>
+                <td class="list_window_table_td_name">{{tester.name}}</td>
+                <td class="list_window_table_buttons">
+                  <button [ngClass]="approvedTestersEmails.includes(tester.email) ? 'button_color_selected' : 'button_color'" class="button_yes" (click)="yes(tester.email)">
+                    <img src="../../../assets/pictures/approveOrderComponent/1.png"/>
+                  </button>
+                  <button [ngClass]="unapprovedTestersEmails.includes(tester.email) ? 'button_color_selected' : 'button_color'" class="button_no" (click)="no(tester.email)">
+                    <img
+                      src="../../../assets/pictures/approveOrderComponent/2.png"/>
+                  </button>
+                </td>
+              </tr>
+              <tr class="list_window_table_tr_margin">
+                <td></td>
+                <td class="list_window_table_td_any">{{tester.email}}</td>
+                <td></td>
+              </tr>
+              <tr class="list_window_table_tr_margin">
+                <td></td>
+                <td class="list_window_table_td_any">{{tester.device}}</td>
+                <td></td>
+              </tr>
+              <tr class="list_window_table_tr_margin">
+                <td></td>
+                <td class="list_window_table_td_any">{{tester.mobileOperator}}</td>
+                <td></td>
+              </tr>
+              <tr class="list_window_table_tr_margin">
+                <td></td>
+                <td class="list_window_table_td_any">{{tester.networks}}</td>
+                <td></td>
+              </tr>
+              <tr class="list_window_table_tr_margin">
+                <td></td>
+                <td class="list_window_table_td_any">Рейтинг: {{tester.rating}}</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="margin_bottom"></div>
+    </div>
+    <div class="col-lg-3" align="centor">
+      <div class="text">Статус: {{status}}</div>
+      <div class="buttons">
+        <button class="button_back" routerLink="/personal-account-component">Назад</button>
+        <button (click)="confirm()">Подтвердить</button>
+      </div>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>
