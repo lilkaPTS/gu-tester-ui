@@ -7,7 +7,6 @@
   <div (click)="select(summary)" align="left" class="p_summary" *ngFor="let summary of listSummary">
     {{summary.id}} : {{summary.text}}
     <br>
+<!--    <img src="../../../assets/123.PNG" height="30" width="120"/>-->
     <div class="status_REJECT" *ngIf="summary.status == 'REJECT'">Отклонено</div>
 </div>
-
-

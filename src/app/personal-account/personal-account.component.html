@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td class="personal_account_td">
-            <app-list-summary (output)="list1Handler($event, rejectModal)" [header]="header1" [listSummary]="list1"></app-list-summary>
+            <app-list-summary (output)="list1Handler($event, rejectModal, invitationModal)" [header]="header1" [listSummary]="list1"></app-list-summary>
           </td>
           <td class="personal_account_td" align="right">
             <app-list-summary (output)="list2Handler($event)" [header]="header2" [listSummary]="list2"></app-list-summary>
@@ -31,19 +31,28 @@
   </div>
 </div>
 
-<ng-template #rejectModal let-modal>
-  <div>
-    {{adminComment}}
-  </div>
-  <div>
-    <button (click)="removeOrder(modal)">Удалить</button>
-    <button (click)="reopenOrder(modal)">Переоткрыть</button>
+<ng-template #invitationModal let-modal>
+  <div class="screen">
+    <img src="../../assets/pic.PNG" height="654" width="608"/>
   </div>
 </ng-template>
 
+<ng-template #rejectModal let-modal>
+  <div class="reject_div">
+    <div class="reject_adminComment">
+      {{adminComment}}
+    </div>
+    <div class="buttons_rejectmodal">
+      <button class="margin_reject_buttons" (click)="removeOrder(modal)">Удалить</button>
+      <button (click)="reopenOrder(modal)">Переоткрыть</button>
+    </div>
+  </div>
+
+</ng-template>
+
 <ng-template #selectOs let-modal>
-  <div>
-    <button (click)="iosClick(modal)">iOS</button>
-    <button (click)="androidClick(modal)">Android</button>
+  <div class="div_buttons_os">
+    <button class="buttons_os" (click)="iosClick(modal)">iOS</button>
+    <button class="buttons_os" (click)="androidClick(modal)">Android</button>
   </div>
 </ng-template>

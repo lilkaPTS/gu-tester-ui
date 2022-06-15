@@ -79,7 +79,7 @@ export class PersonalAccountComponent implements OnInit {
         this.fillingLists(data);
       });
     } else if(this.authorizedUser.role == "TESTER") {
-
+      this.list3.push({id: 1, text: "Swoosh", status: 'ACTIVE'})
     } else if(this.authorizedUser.role == "ADMIN") {
       this.orderService.getAllOrderLowInfo().subscribe(data => {
         this.fillingLists(data);
@@ -116,7 +116,7 @@ export class PersonalAccountComponent implements OnInit {
     this.list4.sort((a, b) => a.id - b.id);
   }
 
-  list1Handler(output: SummaryForList, content?: any) {
+  list1Handler(output: SummaryForList, content?: any, content2?: any) {
     if(this.authorizedUser.role == "DEVELOPER") {
       if(output.status == "REJECT") {
         this.selectedList1 = output.id ? output.id : -1;
@@ -126,7 +126,7 @@ export class PersonalAccountComponent implements OnInit {
         this.openModalService.open(content, "md")
       }
     } else if(this.authorizedUser.role == "TESTER") {
-
+      this.openModalService.open(content2, "md")
     } else if(this.authorizedUser.role == "ADMIN") {
       if(output.status == "CONFIRMATION") {
         this.selectedList1 = output.id ? output.id : -1;

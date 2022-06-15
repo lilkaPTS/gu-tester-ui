@@ -43,6 +43,7 @@
 }
 
 .textarea_admin_comment{
+  height: 250px;
   resize: none;
 }
 

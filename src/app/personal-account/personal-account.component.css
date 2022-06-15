@@ -19,3 +19,44 @@
   padding-top: 5%;
 }
 
+.div_buttons_os {
+  width: 100%;
+}
+
+.buttons_os {
+  width: 50%;
+  background: #D8D2EE;
+}
+
+.screen{
+  background: #C1BADC;
+}
+
+.reject_div {
+
+  background: #D8D2EE;
+  border-radius: 5px;
+}
+
+.reject_adminComment {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.buttons_rejectmodal {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.buttons_rejectmodal button {
+  width: 120px;
+  background: #D8D2EE;
+  border: 2px solid #4E3C8F;
+  border-radius: 3px;
+}
+
+.margin_reject_buttons {
+  margin-top: 20px;
+  margin-right: 30px;
+
+}
